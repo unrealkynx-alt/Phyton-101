@@ -1,54 +1,26 @@
-# import random
-
-# def get_bot_choice():
-#     choices = ["rock", "paper", "scissors"]
-#     return random.choice(choices)
-
-# def check_winner(player, bot):
-#     if player == bot:
-#         return "Tie!"
-#     elif (player == "rock" and bot == "scissors") or \
-#          (player == "paper" and bot == "rock") or \
-#          (player == "scissors" and bot == "paper"):
-#         return "You win!"
-#     else:
-#         return "Bot wins!"
-
-# while True:
-#     player = input("Rock, paper, or scissors? (or quit) ").lower()
-    
-#     if player == "quit":
-#         break
-    
-#     if player not in ["rock", "paper", "scissors"]:
-#         print("Invalid choice, try again")
-#         continue
-    
-#     bot = get_bot_choice()
-#     print(f"Bot chose: {bot}")
-#     print(check_winner(player, bot))
-
-
-
-# Did by myself
-
 import random
+
 
 def get_bot_choice():
     choices = ["human", "elephant", "ant"]
     return random.choice(choices)
 
+
 def check_winner(player, bot):
     if player == bot:
         return "Tie!"
-    if player == "human" and bot == "elephant":
-        return "blud got crushed by an elephant 💀"
-    elif (player == "elephant" and bot == "human") or \
-         (player == "ant" and bot == "elephant") or \
-         (player == "human" and bot == "ant"):
-        return "Wow you actually won😎"
-    else:
-        return "You did NOT win 😂"
+
+    winning_moves = {
+        "human": "ant",
+        "ant": "elephant",
+        "elephant": "human",
+    }
+
+    if winning_moves[player] == bot:
+        return "Wow you actually won 😎"
+
+    return "You did NOT win 😂"
+
 
 stats = {
     "wins": 0,
@@ -57,32 +29,31 @@ stats = {
 }
 
 while True:
-    # choices
     player = input("Human, elephant, or ant? (or quit) ").lower()
 
     if player == "quit":
         break
 
-    elif player not in ["human", "elephant", "ant"]:
-        print(random.choice(correct_typing))
+    if player not in ["human", "elephant", "ant"]:
+        messages = [
+            "BRO JUST TYPE IT CORRECTLY",
+            "yo its gonna loop im lazy to make more dialogs",
+            "zawg be fr",
+        ]
+        print(random.choice(messages))
         continue
-
-    correct_typing = [
-        "BRO JUST TYPE IT CORRECTLY",
-        "yo its gonna loop im lazy to make more dialogs",
-        "zawg be fr"
-    ]
-
-    # stats
-    if player == "human" and bot == "ant":
-        stats["wins"] += 1
-    elif player == "elephant" and bot == "human":
-        stats["loses"] += 1
-    else:
-        stats["draws"] += 1
-    
 
     bot = get_bot_choice()
     print(f"Bot chose: {bot}")
-    print(check_winner(player, bot))
+
+    result = check_winner(player, bot)
+    print(result)
+
+    if result == "Tie!":
+        stats["draws"] += 1
+    elif result == "Wow you actually won 😎":
+        stats["wins"] += 1
+    else:
+        stats["loses"] += 1
+
     print(stats)
