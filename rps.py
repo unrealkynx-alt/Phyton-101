@@ -50,7 +50,14 @@ def check_winner(player, bot):
     else:
         return "You did NOT win 😂"
 
+stats = {
+    "wins": 0,
+    "loses": 0,
+    "draws": 0,
+}
+
 while True:
+    # choices
     player = input("Human, elephant, or ant? (or quit) ").lower()
 
     if player == "quit":
@@ -66,6 +73,16 @@ while True:
         "zawg be fr"
     ]
 
+    # stats
+    if player == "human" and bot == "ant":
+        stats["wins"] += 1
+    elif player == "elephant" and bot == "human":
+        stats["loses"] += 1
+    else:
+        stats["draws"] += 1
+    
+
     bot = get_bot_choice()
     print(f"Bot chose: {bot}")
     print(check_winner(player, bot))
+    print(stats)
