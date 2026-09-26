@@ -18,6 +18,7 @@ If both players choose the same option, it's a tie.
    ```bash
    python rps.py
    ```
+4. Pick a move.
 
 ## Features
 

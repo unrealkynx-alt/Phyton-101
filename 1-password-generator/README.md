@@ -7,7 +7,9 @@ A CLI Python script that generates randomized passwords containing uppercase let
 1. Make sure Python 3 is installed.
 2. Open your terminal in this directory.
 3. Run the script:
+   ```bash
    python password_gen.py
+   ```
 4. Enter the desired password length when prompted.
 
 ## Features
