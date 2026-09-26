@@ -29,7 +29,7 @@ stats = {
 }
 
 while True:
-    player = input("Human, elephant, or ant? (or quit) ").lower()
+    player = input("Human, elephant, or ant? (or quit) ").strip().lower()
 
     if player == "quit":
         break
