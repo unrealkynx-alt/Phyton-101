@@ -54,12 +54,14 @@ while True:
             if task_num.isdigit():
                 task_index = int(task_num) - 1
 
-            if 0 <= task_index < len (tasks):
-                removed_task = tasks.pop(task_index)
-                save_tasks(tasks)
-                print(f"Removed: '{removed_task}'")
+                if 0 <= task_index < len(tasks):
+                    removed_task = tasks.pop(task_index)
+                    save_tasks(tasks)
+                    print(f"Removed: '{removed_task}'")
+                else:
+                    print("Task number out of range.")
             else:
-                print("Invalid task number.")
+                print("Please enter a valid number.")
 
     elif choice == "4":
         print("Bye-bye!")
